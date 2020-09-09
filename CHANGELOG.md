@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+- Do not support Ruby 2.4
+
+### Added
+
+- Add Sweden endpoint
+
+## [2.4.3] - 2020-08-07
+
+### Fixed
+- Fix file permission issue in published gem
+
+## [2.4.2] - 2020-08-03 [YANKED]
+
+### Fixed
+
+- Work around another bad charset name?
+- Parse XML browse tree data reports
+
+## [2.4.1] - 2020-05-05
+
+### Added
+
+- Support for binary files in the Feeds API
+
+## [2.4.0] - 2020-04-13
+
+>>>>>>> f1f1af1... Add Sweden endpoint
 ### Added
 - Add Netherlands endpoint
 
