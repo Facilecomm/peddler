@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- Add Turkey endpoint
 - Add Sweden endpoint
 
 ## [2.4.3] - 2020-08-07
