@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'time'
+
 module Peddler
   # Parses useful metadata returned in response headers
   module Headers
@@ -47,7 +49,10 @@ module Peddler
       match_data = headers['Content-Type']&.match(/charset=(.*);?/)
       return unless match_data
 
-      Encoding.find(match_data[1])
+      string = match_data[1].upcase
+      string = 'UTF-8' if string == 'UTF8'
+
+      Encoding.find(string)
     end
 
     # The max hourly request quota for the requested operation

@@ -75,4 +75,26 @@ class TestPeddlerErrorsBuilder < MiniTest::Test
       assert_nil @error
     end
   end
+
+  # https://github.com/hakanensari/peddler/issues/145
+  class Issue145 < TestPeddlerErrorsBuilder
+    def setup
+      Peddler::Errors.const_set('InvalidMarketplace', StandardError)
+      body = <<-XML
+        <ErrorResponse>
+          <Error>
+            <Code>InvalidMarketplace</Code>
+            <Message>Feed rejected</Message>
+          </Error>
+        </ErrorResponse>
+      XML
+      @cause = Excon::Error::HTTPStatus.new(nil, nil, OpenStruct.new(body: body))
+    end
+
+    def test_throws_type_error
+      assert_raises TypeError do
+        Peddler::Errors::Builder.call(@cause)
+      end
+    end
+  end
 end

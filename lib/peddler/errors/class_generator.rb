@@ -19,7 +19,12 @@ module Peddler
 
       def generate(name)
         with_mutex do
-          return Errors.const_get(name) if Errors.const_defined?(name)
+          if Errors.const_defined?(name)
+            error = Errors.const_get(name)
+            return error if error <= Error
+
+            raise TypeError, "#{name} must be a Peddler::Errors::Error"
+          end
 
           Errors.const_set(name, Class.new(Error))
         end
@@ -27,8 +32,8 @@ module Peddler
 
       private
 
-      def with_mutex
-        @mutex.synchronize { yield }
+      def with_mutex(&block)
+        @mutex.synchronize(&block)
       end
     end
   end

@@ -2,6 +2,12 @@ Layout/LineLength:
   Exclude:
     - "test/**/*"
   IgnoredPatterns: ['\A\s*#']
+Lint/EmptyBlock:
+  Exclude:
+    - "Appraisals"
+Lint/StructNewOverride:
+  Exclude:
+    - "test/**/*"
 Metrics/AbcSize:
   Exclude:
     - "test/**/*"
@@ -19,3 +25,6 @@ Metrics/ParameterLists:
 Naming/AccessorMethodName:
   Exclude:
     - "lib/mws/**/client.rb"
+Naming/VariableNumber:
+  Exclude:
+    - "test/**/*"
